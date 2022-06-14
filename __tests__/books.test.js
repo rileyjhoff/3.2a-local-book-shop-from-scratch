@@ -30,6 +30,7 @@ describe('books routes', () => {
     // ]);
     const res = await request(app).get('/books/2');
     const book2 = res.body.find((book) => book.id === 2);
+    console.log(book2);
     expect(book2).toHaveProperty(
       'title',
       'Financial Planning Basics for Doctors'
