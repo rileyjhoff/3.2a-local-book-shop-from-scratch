@@ -19,9 +19,9 @@ describe('authors routes', () => {
 
   it('/authors/:id should return author detail, including books', async () => {
     const res = await request(app).get('/authors/1');
-    const auth1 = res.body.find((book) => book.id === 2);
+    const auth1 = res.body.find((author) => author.id === 1);
     expect(auth1).toHaveProperty('name', 'Ernest Hemingway');
-    expect(auth1).toHaveProperty('dob', '1899-07-21');
+    expect(auth1).toHaveProperty('dob', '1899-07-21T08:00:00.000Z');
     expect(auth1).toHaveProperty('pob', 'Oak Park, IL');
     expect(auth1).toHaveProperty('books', [
       { id: 8, title: 'For Whom the Bell Tolls', released: 1940 },
