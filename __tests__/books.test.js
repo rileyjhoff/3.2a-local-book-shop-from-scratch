@@ -19,6 +19,29 @@ describe('books routes', () => {
     expect(book10).toHaveProperty('released', 1926);
   });
 
+  it('/books/:id should return book detail, including authors', async () => {
+    // const res = await request(app).get('/books/1');
+    // expect(res.body.length).toEqual(10);
+    // const book1 = res.body.find((book) => book.id === 1);
+    // expect(book1).toHaveProperty('title', 'The Corrections');
+    // expect(book1).toHaveProperty('released', 2001);
+    // expect(book1).toHaveProperty('authors', [
+    //   { id: 7, name: 'Jonathan Franzen' },
+    // ]);
+    const res = await request(app).get('/books/2');
+    const book2 = res.body.find((book) => book.id === 2);
+    expect(book2).toHaveProperty(
+      'title',
+      'Financial Planning Basics for Doctors'
+    );
+    expect(book2).toHaveProperty('released', 2019);
+    expect(book2).toHaveProperty('authors', [
+      { id: 8, name: 'Marshall Weintraub' },
+      { id: 9, name: 'Cole Kimball' },
+      { id: 10, name: 'Michael Merrill' },
+    ]);
+  });
+
   afterAll(() => {
     pool.end();
   });
