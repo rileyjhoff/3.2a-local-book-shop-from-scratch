@@ -37,7 +37,7 @@ describe('authors routes', () => {
       pob: 'Saint Paul, MN',
     });
     expect(res.body.name).toEqual('F. Scott Fitzgerald');
-    expect(res.body.dob).toEqual('1896-09-24');
+    expect(res.body.dob).toEqual('1896-09-24T08:00:00.000Z');
     expect(res.body.pob).toEqual('Saint Paul, MN');
   });
 
