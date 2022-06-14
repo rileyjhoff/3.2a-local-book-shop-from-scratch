@@ -30,6 +30,17 @@ describe('authors routes', () => {
     ]);
   });
 
+  it('POST /authors should add a new author', async () => {
+    const res = await request(app).post('/authors').send({
+      name: 'F. Scott Fitzgerald',
+      dob: '1896-09-24',
+      pob: 'Saint Paul, MN',
+    });
+    expect(res.body.name).toEqual('F. Scott Fitzgerald');
+    expect(res.body.dob).toEqual('1896-09-24');
+    expect(res.body.pob).toEqual('Saint Paul, MN');
+  });
+
   afterAll(() => {
     pool.end();
   });
