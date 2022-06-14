@@ -10,6 +10,7 @@ describe('authors routes', () => {
 
   it('GET /authors should return a list of authors', async () => {
     const res = await request(app).get('/authors');
+    expect(res.status).toBe(200);
     expect(res.body.length).toEqual(10);
     const author1 = res.body.find((author) => author.id === 1);
     expect(author1).toHaveProperty('name', 'Ernest Hemingway');
@@ -19,6 +20,7 @@ describe('authors routes', () => {
 
   it('GET /authors/:id should return author detail, including books', async () => {
     const res = await request(app).get('/authors/1');
+    expect(res.status).toBe(200);
     const auth1 = res.body.find((author) => author.id === 1);
     expect(auth1).toHaveProperty('name', 'Ernest Hemingway');
     expect(auth1).toHaveProperty('dob', '1899-07-21T08:00:00.000Z');
@@ -36,6 +38,7 @@ describe('authors routes', () => {
       dob: '1896-09-24',
       pob: 'Saint Paul, MN',
     });
+    expect(res.status).toBe(200);
     expect(res.body.name).toEqual('F. Scott Fitzgerald');
     expect(res.body.dob).toEqual('1896-09-24T08:00:00.000Z');
     expect(res.body.pob).toEqual('Saint Paul, MN');

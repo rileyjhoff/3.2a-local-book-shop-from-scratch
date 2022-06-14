@@ -10,6 +10,7 @@ describe('books routes', () => {
 
   it('GET /books should return a list of books', async () => {
     const res = await request(app).get('/books');
+    expect(res.status).toBe(200);
     expect(res.body.length).toEqual(10);
     const book1 = res.body.find((book) => book.id === 1);
     expect(book1).toHaveProperty('title', 'The Corrections');
@@ -21,6 +22,7 @@ describe('books routes', () => {
 
   it('GET /books/:id should return book detail, including authors', async () => {
     const res = await request(app).get('/books/2');
+    expect(res.status).toBe(200);
     const book2 = res.body.find((book) => book.id === 2);
     expect(book2).toHaveProperty(
       'title',
@@ -39,6 +41,7 @@ describe('books routes', () => {
       title: 'The Great Gatsby',
       released: 1925,
     });
+    expect(res.status).toBe(200);
     expect(res.body.title).toEqual('The Great Gatsby');
     expect(res.body.released).toEqual(1925);
   });
