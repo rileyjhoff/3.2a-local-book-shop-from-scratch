@@ -13,12 +13,8 @@ describe('authors routes', () => {
     expect(res.body.length).toEqual(10);
     const author1 = res.body.find((author) => author.id === 1);
     expect(author1).toHaveProperty('name', 'Ernest Hemingway');
-    expect(author1).toHaveProperty('dob', '1899-07-21');
-    expect(author1).toHaveProperty('pob', 'Oak Park, IL');
     const author10 = res.body.find((author) => author.id === 10);
     expect(author10).toHaveProperty('name', 'Michael Merrill');
-    expect(author10).toHaveProperty('dob', '1980-10-03');
-    expect(author10).toHaveProperty('pob', 'Portland, OR');
   });
 
   afterAll(() => {
