@@ -8,7 +8,7 @@ describe('authors routes', () => {
     return setup(pool);
   });
 
-  it('/authors should return a list of authors', async () => {
+  it('GET /authors should return a list of authors', async () => {
     const res = await request(app).get('/authors');
     expect(res.body.length).toEqual(10);
     const author1 = res.body.find((author) => author.id === 1);
@@ -17,7 +17,7 @@ describe('authors routes', () => {
     expect(author10).toHaveProperty('name', 'Michael Merrill');
   });
 
-  it('/authors/:id should return author detail, including books', async () => {
+  it('GET /authors/:id should return author detail, including books', async () => {
     const res = await request(app).get('/authors/1');
     const auth1 = res.body.find((author) => author.id === 1);
     expect(auth1).toHaveProperty('name', 'Ernest Hemingway');

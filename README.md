@@ -138,15 +138,15 @@ While the schemas should look like the data definitions above, these are descrip
 
 | Task                                                        | Points |
 | ----------------------------------------------------------- | ------ |
-| GET `/books` route returns list of books                      | 2      |
-| GET `/books/:id` route returns book detail with authors       | 2      |
-| POST `/books/:id` route adds a new book                       | 2      |
+| GET `/books` route returns list of books                    | 2      |
+| GET `/books/:id` route returns book detail with authors     | 2      |
+| POST `/books` route adds a new book                         | 2      |
 | Book routes properly delegate database work to the model    | 2      |
 | All book routes tested                                      | 1      |
 | Book routes built vertically                                | 1      |
-| GET `/authors` route returns list of authors                  | 2      |
-| GET `/authors/:id` route returns author detail with books     | 2      |
-| POST `/authors/:id` route adds a new author                   | 2      |
+| GET `/authors` route returns list of authors                | 2      |
+| GET `/authors/:id` route returns author detail with books   | 2      |
+| POST `/authors` route adds a new author                     | 2      |
 | Authors routes properly delegate database work to the model | 2      |
 | All author routes tested                                    | 1      |
 | Authors routes built vertically                             | 1      |

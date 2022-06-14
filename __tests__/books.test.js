@@ -8,7 +8,7 @@ describe('books routes', () => {
     return setup(pool);
   });
 
-  it('/books should return a list of books', async () => {
+  it('GET /books should return a list of books', async () => {
     const res = await request(app).get('/books');
     expect(res.body.length).toEqual(10);
     const book1 = res.body.find((book) => book.id === 1);
@@ -19,7 +19,7 @@ describe('books routes', () => {
     expect(book10).toHaveProperty('released', 1926);
   });
 
-  it('/books/:id should return book detail, including authors', async () => {
+  it('GET /books/:id should return book detail, including authors', async () => {
     const res = await request(app).get('/books/2');
     const book2 = res.body.find((book) => book.id === 2);
     expect(book2).toHaveProperty(
@@ -32,6 +32,15 @@ describe('books routes', () => {
       { id: 9, name: 'Cole Kimball' },
       { id: 10, name: 'Michael Merrill' },
     ]);
+  });
+
+  it('POST /books should add a new book', async () => {
+    const res = await request(app).post('/books').send({
+      title: 'The Great Gatsby',
+      released: 1925,
+    });
+    expect(res.body.title).toEqual('The Great Gatsby');
+    expect(res.body.released).toEqual(1925);
   });
 
   afterAll(() => {
