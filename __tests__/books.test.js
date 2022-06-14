@@ -8,8 +8,15 @@ describe('books routes', () => {
     return setup(pool);
   });
 
-  it('example test - delete me!', () => {
-    expect(1).toEqual(1);
+  it('/books should return a list of books', async () => {
+    const res = await request(app).get('/books');
+    expect(res.body.length).toEqual(10);
+    const book1 = res.body.find((book) => book.id === 1);
+    expect(book1).toHaveProperty('title', 'The Corrections');
+    expect(book1).toHaveProperty('released', 2001);
+    const book10 = res.body.find((book) => book.id === 10);
+    expect(book10).toHaveProperty('title', 'The Sun Also Rises');
+    expect(book10).toHaveProperty('released', 1926);
   });
 
   afterAll(() => {
