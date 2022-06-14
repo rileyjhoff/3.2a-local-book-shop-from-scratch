@@ -1,28 +1,14 @@
 -- Use this file to define your SQL tables
 -- The SQL in this file will be executed when you run `npm run setup-db`
-DROP TABLE IF EXISTS books;
-DROP TABLE IF EXISTS authors;
-DROP TABLE IF EXISTS book_authors;
+
+DROP table if exists books_authors;
+DROP table if exists books;
+DROP table if exists authors;
 
 CREATE TABLE books (
   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
   title VARCHAR,
   released INT
-);
-
-CREATE TABLE authors (
-  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  name VARCHAR,
-  dob DATE,
-  pob VARCHAR
-);
-
-CREATE TABLE books_authors (
-  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
-  book_id INT,
-  author_id INT,
-  FOREIGN KEY (book_id) REFERENCES books(id),
-  FOREIGN KEY (author_id) REFERENCES authors(id)
 );
 
 INSERT INTO books (
@@ -41,6 +27,13 @@ VALUES
   ('A Farewell to Arms', 1929),
   ('The Sun Also Rises', 1926);
 
+CREATE TABLE authors (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  name VARCHAR,
+  dob DATE,
+  pob VARCHAR
+);
+
 INSERT INTO authors (
   name,
   dob,
@@ -57,6 +50,14 @@ VALUES
   ('Marshall Weintraub', '1990-03-21', 'Sacramento, CA'),
   ('Michael Merrill', '1985-08-29', 'Portland, OR'),
   ('Cole Kimball', '1980-10-03', 'Portland, OR');
+
+CREATE TABLE books_authors (
+  id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
+  book_id INT,
+  author_id INT,
+  FOREIGN KEY (book_id) REFERENCES books(id),
+  FOREIGN KEY (author_id) REFERENCES authors(id)
+);
 
 INSERT INTO books_authors (
   book_id,
