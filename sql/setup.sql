@@ -48,8 +48,8 @@ VALUES
   ('Patrick Rothfuss', '1973-06-06', 'Madison, WI'),
   ('Jonathan Franzen', '1959-08-17', 'Western Springs, IL'),
   ('Marshall Weintraub', '1990-03-21', 'Sacramento, CA'),
-  ('Michael Merrill', '1985-08-29', 'Portland, OR'),
-  ('Cole Kimball', '1980-10-03', 'Portland, OR');
+  ('Cole Kimball', '1985-08-29', 'Portland, OR'),
+  ('Michael Merrill', '1980-10-03', 'Portland, OR');
 
 CREATE TABLE books_authors (
   id INT GENERATED ALWAYS AS IDENTITY PRIMARY KEY,
