@@ -17,6 +17,19 @@ describe('authors routes', () => {
     expect(author10).toHaveProperty('name', 'Michael Merrill');
   });
 
+  it('/authors/:id should return author detail, including books', async () => {
+    const res = await request(app).get('/authors/1');
+    const auth1 = res.body.find((book) => book.id === 2);
+    expect(auth1).toHaveProperty('name', 'Ernest Hemingway');
+    expect(auth1).toHaveProperty('dob', '1899-07-21');
+    expect(auth1).toHaveProperty('pob', 'Oak Park, IL');
+    expect(auth1).toHaveProperty('books', [
+      { id: 8, title: 'For Whom the Bell Tolls', released: 1940 },
+      { id: 9, title: 'A Farewell to Arms', released: 1929 },
+      { id: 10, title: 'The Sun Also Rises', released: 1926 },
+    ]);
+  });
+
   afterAll(() => {
     pool.end();
   });
