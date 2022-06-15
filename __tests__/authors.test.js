@@ -23,7 +23,7 @@ describe('authors routes', () => {
     expect(res.status).toBe(200);
     const auth1 = res.body.find((author) => author.id === 1);
     expect(auth1).toHaveProperty('name', 'Ernest Hemingway');
-    expect(auth1).toHaveProperty('dob', '1899-07-21T08:00:00.000Z');
+    expect(auth1).toHaveProperty('dob', 'Fri Jul 21 1899');
     expect(auth1).toHaveProperty('pob', 'Oak Park, IL');
     expect(auth1).toHaveProperty('books', [
       { id: 8, title: 'For Whom the Bell Tolls', released: 1940 },
@@ -35,12 +35,12 @@ describe('authors routes', () => {
   it('POST /authors should add a new author', async () => {
     const res = await request(app).post('/authors').send({
       name: 'F. Scott Fitzgerald',
-      dob: '1896-09-24',
+      dob: 'Thu Sep 24 1896',
       pob: 'Saint Paul, MN',
     });
     expect(res.status).toBe(200);
     expect(res.body.name).toEqual('F. Scott Fitzgerald');
-    expect(res.body.dob).toEqual('1896-09-24T08:00:00.000Z');
+    expect(res.body.dob).toEqual('Thu Sep 24 1896');
     expect(res.body.pob).toEqual('Saint Paul, MN');
   });
 
